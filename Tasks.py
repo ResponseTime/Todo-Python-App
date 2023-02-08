@@ -61,13 +61,3 @@ class Tasks:
             with open("tasks.txt", "w") as f:
                 for key, value in self.data.items():
                     f.write(f"{key}:{value}\n")
-
-
-if __name__ == "__main__":
-    test = Tasks()
-    print(test.load_data())
-    test.add_task("test", datetime.datetime.now().strftime(
-        "%d/%m/%Y | %H:%M:%S"))
-    test.add_task("real task", "09/02/2023 | 09:33:35")
-    test.update_task("test", "04/12/2023 | 10:33:35")
-    print(test.load_data())
