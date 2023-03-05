@@ -28,7 +28,22 @@ def f1():
 
 def f2():
     while True:
-        pass
+        data = Tasks.load_data()
+        elems = []
+        for i in list(data.values()):
+            if str(i).split(" | ")[0] == datetime.datetime.now().strftime("%d/%m/%Y"):
+                elems.append(str(i))
+        for i in elems:
+            if (str(i).split(" | ")[1] == datetime.datetime.now().strftime("%H:%M")):
+                plyer.notification.notify(
+                    title="Task",
+                    message=list(data.keys())[list(data.values()).index(i)],
+                    timeout=10
+                )
+                data.pop(list(data.keys())[list(data.values()).index(i)])
+                with open("tasks.txt", "w") as f:
+                    for key, value in data.items():
+                        f.write(f"{key}:{value}\n")
 
 
 if __name__ == "__main__":
