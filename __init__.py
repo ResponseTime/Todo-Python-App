@@ -21,7 +21,8 @@ def f1():
                 dt = input("Enter the date: ")
                 test.update_task(task, dt)
             case 3:
-                print(test.load_data())
+                for key, value in Tasks.load_data().items():
+                    print(f"{key} : {value}")
             case _:
                 print("Invalid choice")
 
